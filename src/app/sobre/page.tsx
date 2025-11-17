@@ -1,9 +1,9 @@
 // src/app/sobre/page.tsx
-import { Metadata } from 'next';
+import { Metadata } from "next";
 
 export const metadata: Metadata = {
-  title: 'Sobre Nós | Horizon Secure',
-  description: 'Conheça nossa missão, valores e o que nos move.',
+  title: "Sobre Nós | Horizon Secure",
+  description: "Conheça nossa missão, valores e o que nos move.",
 };
 
 export default function SobrePage() {
@@ -12,8 +12,10 @@ export default function SobrePage() {
       {/* Seção 1: Header da Página (Hero) */}
       <section className="bg-gray-800 py-20 text-white">
         <div className="container mx-auto px-6 text-center">
-          <h1 className="text-4xl font-bold md:text-5xl">Sobre a Horizon Secure</h1>
-          <p className="mt-4 max-w-2xl text-lg text-gray-300 mx-auto">
+          <h1 className="text-4xl font-bold md:text-5xl">
+            Sobre a Horizon Secure
+          </h1>
+          <p className="mx-auto mt-4 max-w-2xl text-lg text-gray-300">
             Nossa jornada para tornar o mundo digital um lugar mais seguro.
           </p>
         </div>
@@ -31,7 +33,8 @@ export default function SobrePage() {
               Prover soluções de segurança cibernética de elite, integrando
               defesa proativa e inteligência de ameaças para proteger os ativos
               críticos dos nossos clientes. Atuamos como uma extensão da sua
-<h4>Ação Imediata (Admin Bypass)</h4>equipe, garantindo resiliência e confiança no cenário digital.
+              <h4>Ação Imediata (Admin Bypass)</h4>equipe, garantindo
+              resiliência e confiança no cenário digital.
             </p>
             <p className="text-gray-700">
               Acreditamos que a segurança não é um produto, mas um processo
@@ -46,8 +49,8 @@ export default function SobrePage() {
             </h2>
             <ul className="list-inside list-disc space-y-2 text-gray-700">
               <li>
-                <span className="font-semibold">Integridade:</span> Transparência
-                e ética em todas as nossas ações.
+                <span className="font-semibold">Integridade:</span>{" "}
+                Transparência e ética em todas as nossas ações.
               </li>
               <li>
                 <span className="font-semibold">Excelência:</span> Busca
