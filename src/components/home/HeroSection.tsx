@@ -1,5 +1,5 @@
 // src/components/home/HeroSection.tsx
-import Link from 'next/link';
+import Link from "next/link";
 
 export function HeroSection() {
   return (

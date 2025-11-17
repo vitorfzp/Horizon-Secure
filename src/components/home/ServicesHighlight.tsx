@@ -4,18 +4,19 @@
 const servicos = [
   {
     id: 1,
-    nome: 'Arquitetura DevSecOps',
-    descricao: 'Integramos segurança em todo o ciclo de vida do seu software.',
+    nome: "Arquitetura DevSecOps",
+    descricao: "Integramos segurança em todo o ciclo de vida do seu software.",
   },
   {
     id: 2,
-    nome: 'Testes de Invasão (Pentest)',
-    descricao: 'Identificamos e corrigimos vulnerabilidades antes que sejam exploradas.',
+    nome: "Testes de Invasão (Pentest)",
+    descricao:
+      "Identificamos e corrigimos vulnerabilidades antes que sejam exploradas.",
   },
   {
     id: 3,
-    nome: 'Monitoramento e Resposta (SOC)',
-    descricao: 'Proteção 24/7 com detecção e resposta rápida a ameaças.',
+    nome: "Monitoramento e Resposta (SOC)",
+    descricao: "Proteção 24/7 com detecção e resposta rápida a ameaças.",
   },
 ];
 
