@@ -1,17 +1,17 @@
 // src/app/layout.tsx
-import type { Metadata } from 'next';
-import { Inter } from 'next/font/google';
-import './globals.css';
+import type { Metadata } from "next";
+import { Inter } from "next/font/google";
+import "./globals.css";
 
 // 1. Importe os novos componentes
-import { Header } from '@/layouts/Header';
-import { Footer } from '@/layouts/Footer';
+import { Header } from "@/layouts/Header";
+import { Footer } from "@/layouts/Footer";
 
-const inter = Inter({ subsets: ['latin'] });
+const inter = Inter({ subsets: ["latin"] });
 
 export const metadata: Metadata = {
-  title: 'Horizon Secure',
-  description: 'Sua fortaleza digital',
+  title: "Horizon Secure",
+  description: "Sua fortaleza digital",
 };
 
 export default function RootLayout({

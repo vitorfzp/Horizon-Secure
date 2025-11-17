@@ -1,5 +1,5 @@
 // src/layouts/Header.tsx
-import Link from 'next/link';
+import Link from "next/link";
 
 export function Header() {
   return (
@@ -12,22 +12,13 @@ export function Header() {
 
         {/* Links de Navegação */}
         <div className="hidden space-x-6 md:flex">
-          <Link
-            href="/"
-            className="text-gray-600 hover:text-blue-500"
-          >
+          <Link href="/" className="text-gray-600 hover:text-blue-500">
             Home
           </Link>
-          <Link
-            href="/sobre"
-            className="text-gray-600 hover:text-blue-500"
-          >
+          <Link href="/sobre" className="text-gray-600 hover:text-blue-500">
             Sobre
           </Link>
-          <Link
-            href="/servicos"
-            className="text-gray-600 hover:text-blue-500"
-          >
+          <Link href="/servicos" className="text-gray-600 hover:text-blue-500">
             Serviços
           </Link>
           <Link
@@ -37,7 +28,7 @@ export function Header() {
             Contato
           </Link>
         </div>
-        
+
         {/* TODO: Menu Mobile (para Fase 1.1) */}
       </nav>
     </header>
