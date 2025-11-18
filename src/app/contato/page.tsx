@@ -1,9 +1,9 @@
 // src/app/contato/page.tsx
-import { Metadata } from 'next';
+import { Metadata } from "next";
 
 export const metadata: Metadata = {
-  title: 'Contato | Horizon Secure',
-  description: 'Entre em contato com nossos especialistas em segurança.',
+  title: "Contato | Horizon Secure",
+  description: "Entre em contato com nossos especialistas em segurança.",
 };
 
 export default function ContatoPage() {
@@ -13,7 +13,7 @@ export default function ContatoPage() {
       <section className="bg-gray-800 py-20 text-white">
         <div className="container mx-auto px-6 text-center">
           <h1 className="text-4xl font-bold md:text-5xl">Fale Conosco</h1>
-          <p className="mt-4 max-w-2xl text-lg text-gray-300 mx-auto">
+          <p className="mx-auto mt-4 max-w-2xl text-lg text-gray-300">
             Estamos prontos para ouvir sobre seus desafios de segurança.
           </p>
         </div>
@@ -27,7 +27,7 @@ export default function ContatoPage() {
             <h2 className="mb-6 text-3xl font-semibold text-gray-900">
               Envie-nos uma Mensagem
             </h2>
-            
+
             {/* NOTA DE ENGENHARIA: 
               Este é um formulário UI-only (Fase 1). 
               A lógica de submissão (useState, handleSubmit) e a
