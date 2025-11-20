@@ -138,10 +138,11 @@ export default function ContatoPage() {
             </div>
 
             {/* Card Extra Decorativo */}
-            <div className="p-8 rounded-2xl bg-gradient-to-br from-horizon-primary/20 to-horizon-secondary/20 border border-white/10 text-center">
-                <p className="text-white font-medium">
-                    &quot;A segurança não é um destino, é uma jornada constante.&quot;
-                </p>
+            <div className="from-horizon-primary/20 to-horizon-secondary/20 rounded-2xl border border-white/10 bg-gradient-to-br p-8 text-center">
+              <p className="font-medium text-white">
+                &quot;A segurança não é um destino, é uma jornada
+                constante.&quot;
+              </p>
             </div>
           </div>
         </div>
