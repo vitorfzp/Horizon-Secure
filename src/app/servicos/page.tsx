@@ -60,10 +60,7 @@ export default function ServicosPage() {
       <section className="relative px-6 py-20 text-center">
         <div className="bg-horizon-secondary/10 absolute top-1/2 left-1/2 -z-10 h-[500px] w-[500px] -translate-x-1/2 -translate-y-1/2 blur-[120px]"></div>
         <h1 className="mb-6 text-4xl font-bold text-white md:text-6xl">
-          Nossos{" "}
-          <span className="bg-text-gradient bg-clip-text text-transparent">
-            Serviços
-          </span>
+          Nossos Serviços
         </h1>
         <p className="mx-auto max-w-2xl text-lg text-gray-400">
           Soluções completas de cibersegurança desenhadas para blindar sua

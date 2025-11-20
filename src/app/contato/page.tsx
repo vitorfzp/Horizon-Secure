@@ -12,10 +12,8 @@ export default function ContatoPage() {
     <div className="bg-horizon-bg min-h-screen pt-20">
       <section className="px-6 py-16 text-center">
         <h1 className="mb-4 text-4xl font-bold text-white md:text-6xl">
-          Fale{" "}
-          <span className="bg-text-gradient bg-clip-text text-transparent">
-            Conosco
-          </span>
+          Fale Conosco
+          <br />
         </h1>
         <p className="mx-auto max-w-2xl text-lg text-gray-400">
           Estamos prontos para ouvir sobre seus desafios de segurança e propor a

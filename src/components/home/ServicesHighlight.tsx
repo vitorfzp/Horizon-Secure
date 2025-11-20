@@ -32,10 +32,7 @@ export function ServicesHighlight() {
       <div className="container mx-auto px-6">
         <div className="mb-16 text-center">
           <h2 className="mb-4 text-3xl font-bold md:text-4xl">
-            Nossas{" "}
-            <span className="bg-text-gradient bg-clip-text text-transparent">
-              Especialidades
-            </span>
+            Nossas Especialidades
           </h2>
           <p className="mx-auto max-w-2xl text-lg text-gray-400">
             Focados em proteger o que mais importa com tecnologia de ponta.
