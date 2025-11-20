@@ -32,10 +32,8 @@ export function HeroSection() {
 
         {/* Título Principal */}
         <h1 className="animate-fade-in-up text-5xl leading-tight font-bold text-white [animation-delay:200ms] md:text-7xl">
-          Proteção Além do <br />
-          <span className="bg-text-gradient bg-clip-text text-transparent">
-            Horizonte Digital
-          </span>
+          Proteção Além do Horizonte Digital
+          <br />
         </h1>
 
         {/* Subtítulo */}

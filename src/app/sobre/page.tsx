@@ -17,10 +17,7 @@ export default function SobrePage() {
 
         <div className="container mx-auto px-6">
           <h1 className="animate-fade-in-up mb-6 text-4xl font-bold text-white md:text-5xl">
-            Sobre a{" "}
-            <span className="bg-text-gradient bg-clip-text text-transparent">
-              Horizon Secure
-            </span>
+            Sobre a Horizon Secure
           </h1>
           <p className="animate-fade-in-up mx-auto mt-4 max-w-2xl text-lg text-gray-400 [animation-delay:200ms]">
             Nossa jornada para tornar o mundo digital um lugar mais seguro,
