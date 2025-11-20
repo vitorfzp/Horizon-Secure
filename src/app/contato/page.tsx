@@ -1,10 +1,9 @@
-// src/app/contato/page.tsx
 import { Metadata } from "next";
 import { Mail, MapPin, Phone, Clock } from "lucide-react";
 
 export const metadata: Metadata = {
   title: "Contato | Horizon Secure",
-  description: "Entre em contato com nossos especialistas em segurança.",
+  description: "Entre em contato com nossos especialistas.",
 };
 
 export default function ContatoPage() {
@@ -17,72 +16,42 @@ export default function ContatoPage() {
             Conosco
           </span>
         </h1>
-        <p className="mx-auto max-w-2xl text-lg text-gray-400">
-          Estamos prontos para ouvir sobre seus desafios de segurança e propor a
-          melhor defesa.
-        </p>
       </section>
 
       <section className="container mx-auto px-6 pb-24">
         <div className="grid grid-cols-1 gap-12 lg:grid-cols-2">
-          {/* Coluna do Formulário */}
           <div className="rounded-2xl border border-white/10 bg-white/5 p-8 backdrop-blur-md">
             <h2 className="mb-6 text-2xl font-bold text-white">
               Envie uma Mensagem
             </h2>
-
             <form className="space-y-6">
               <div>
-                <label
-                  htmlFor="nome"
-                  className="mb-2 block text-sm font-medium text-gray-300"
-                >
+                <label className="mb-2 block text-sm font-medium text-gray-300">
                   Nome Completo
                 </label>
                 <input
                   type="text"
-                  id="nome"
-                  name="nome"
-                  required
-                  className="bg-horizon-bg focus:border-horizon-primary focus:ring-horizon-primary w-full rounded-lg border border-white/20 px-4 py-3 text-white placeholder-gray-500 transition-all focus:ring-1 focus:outline-none"
-                  placeholder="Seu nome"
+                  className="bg-horizon-bg focus:border-horizon-primary w-full rounded-lg border border-white/20 px-4 py-3 text-white transition-all focus:outline-none"
                 />
               </div>
-
               <div>
-                <label
-                  htmlFor="email"
-                  className="mb-2 block text-sm font-medium text-gray-300"
-                >
-                  E-mail Corporativo
+                <label className="mb-2 block text-sm font-medium text-gray-300">
+                  E-mail
                 </label>
                 <input
                   type="email"
-                  id="email"
-                  name="email"
-                  required
-                  className="bg-horizon-bg focus:border-horizon-primary focus:ring-horizon-primary w-full rounded-lg border border-white/20 px-4 py-3 text-white placeholder-gray-500 transition-all focus:ring-1 focus:outline-none"
-                  placeholder="voce@empresa.com"
+                  className="bg-horizon-bg focus:border-horizon-primary w-full rounded-lg border border-white/20 px-4 py-3 text-white transition-all focus:outline-none"
                 />
               </div>
-
               <div>
-                <label
-                  htmlFor="mensagem"
-                  className="mb-2 block text-sm font-medium text-gray-300"
-                >
+                <label className="mb-2 block text-sm font-medium text-gray-300">
                   Mensagem
                 </label>
                 <textarea
-                  id="mensagem"
-                  name="mensagem"
                   rows={5}
-                  required
-                  className="bg-horizon-bg focus:border-horizon-primary focus:ring-horizon-primary w-full rounded-lg border border-white/20 px-4 py-3 text-white placeholder-gray-500 transition-all focus:ring-1 focus:outline-none"
-                  placeholder="Como podemos ajudar a proteger seu negócio?"
+                  className="bg-horizon-bg focus:border-horizon-primary w-full rounded-lg border border-white/20 px-4 py-3 text-white transition-all focus:outline-none"
                 ></textarea>
               </div>
-
               <button
                 type="submit"
                 disabled
@@ -93,55 +62,15 @@ export default function ContatoPage() {
             </form>
           </div>
 
-          {/* Coluna de Informações */}
-          <div className="space-y-8">
-            <div className="rounded-2xl border border-white/10 bg-white/5 p-8 backdrop-blur-md">
-              <h2 className="mb-6 text-2xl font-bold text-white">
-                Canais de Atendimento
-              </h2>
-              <div className="space-y-6">
-                <div className="flex items-start gap-4">
-                  <Mail className="text-horizon-secondary mt-1" size={24} />
-                  <div>
-                    <p className="font-semibold text-white">E-mail</p>
-                    <p className="text-gray-400">contato@horizon-secure.com</p>
-                  </div>
-                </div>
-                <div className="flex items-start gap-4">
-                  <Phone className="text-horizon-secondary mt-1" size={24} />
-                  <div>
-                    <p className="font-semibold text-white">Telefone</p>
-                    <p className="text-gray-400">+55 (11) 98765-4321</p>
-                  </div>
-                </div>
-                <div className="flex items-start gap-4">
-                  <MapPin className="text-horizon-secondary mt-1" size={24} />
-                  <div>
-                    <p className="font-semibold text-white">Endereço</p>
-                    <p className="text-gray-400">
-                      Av. Digital, 123, 10º Andar
-                      <br />
-                      São Paulo - SP, Brasil
-                    </p>
-                  </div>
-                </div>
-                <div className="flex items-start gap-4">
-                  <Clock className="text-horizon-secondary mt-1" size={24} />
-                  <div>
-                    <p className="font-semibold text-white">Horário</p>
-                    <p className="text-gray-400">
-                      Segunda a Sexta, das 9h às 18h
-                    </p>
-                  </div>
-                </div>
-              </div>
-            </div>
-
-            {/* Card Extra Decorativo */}
-            <div className="from-horizon-primary/20 to-horizon-secondary/20 rounded-2xl border border-white/10 bg-gradient-to-br p-8 text-center">
-              <p className="font-medium text-white">
-                &quot;A segurança não é um destino, é uma jornada
-                constante.&quot;
+          <div className="space-y-8 text-gray-400">
+            <div className="rounded-2xl border border-white/10 bg-white/5 p-8">
+              <h2 className="mb-6 text-2xl font-bold text-white">Canais</h2>
+              <p className="flex items-center gap-3">
+                <Mail className="text-horizon-secondary" />{" "}
+                contato@horizon-secure.com
+              </p>
+              <p className="mt-4 flex items-center gap-3">
+                <MapPin className="text-horizon-secondary" /> São Paulo - SP
               </p>
             </div>
           </div>

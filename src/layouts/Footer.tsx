@@ -1,4 +1,3 @@
-// src/layouts/Footer.tsx
 import Link from "next/link";
 
 export function Footer() {
@@ -15,7 +14,6 @@ export function Footer() {
             SECURE
           </span>
         </div>
-
         <div className="mb-8 flex justify-center gap-8 text-sm text-gray-400">
           <Link href="/" className="transition-colors hover:text-white">
             Home
@@ -30,7 +28,6 @@ export function Footer() {
             Contato
           </Link>
         </div>
-
         <p className="text-sm text-gray-500">
           &copy; {currentYear} Horizon Secure. Todos os direitos reservados.
         </p>
