@@ -1,97 +1,57 @@
-// src/components/home/HeroSection.tsx
-import Link from "next/link";
-import { ArrowRight, Shield, Lock, Activity } from "lucide-react";
+import React from 'react';
+import Link from 'next/link';
+import { ChevronRight, Activity, ShieldCheck, Lock } from 'lucide-react';
+import { Button } from '@/components/ui/Button';
+import { NewBadge } from '@/components/ui/NewBadge';
 
 export function HeroSection() {
   return (
-    <section className="relative flex min-h-screen items-center justify-center overflow-hidden pt-20">
-      {/* Background Image com Overlay Escuro/Roxo */}
-      <div className="absolute inset-0 z-0">
-        {/* A imagem deve estar em public/hero-background.jpg */}
-        <div
-          className="h-full w-full bg-cover bg-center opacity-40"
-          style={{ backgroundImage: "url('/hero-background.jpg')" }}
-        ></div>
-        {/* Gradiente para mesclar com o fundo do site */}
-        <div className="from-horizon-bg/80 via-horizon-bg/90 to-horizon-bg absolute inset-0 bg-gradient-to-b"></div>
-        <div className="from-horizon-bg to-horizon-bg absolute inset-0 bg-gradient-to-r via-transparent"></div>
+    <div className="relative pt-40 pb-24 md:pt-52 md:pb-40 overflow-hidden min-h-screen flex items-center animate-fade-in">
+      <div className="absolute inset-0 bg-[#000000]">
+        <div className="absolute inset-0 bg-grid-pattern opacity-[0.15]"></div>
+        <div className="pointer-events-none absolute -top-[30%] left-1/2 -translate-x-1/2 w-[80%] h-[80%] rounded-full bg-indigo-600/20 blur-[150px] animate-pulse-slow"></div>
       </div>
-
-      {/* Efeitos de Luz (Glow) */}
-      <div className="animate-pulse-slow bg-horizon-primary/20 absolute top-1/4 left-1/4 h-96 w-96 rounded-full blur-[128px]"></div>
-      <div className="animate-pulse-slow bg-horizon-secondary/20 absolute right-1/4 bottom-1/4 h-96 w-96 rounded-full blur-[128px] delay-1000"></div>
-
-      <div className="z-10 container mx-auto px-4 text-center">
-        {/* Badge */}
-        <div className="animate-fade-in-up mb-8 inline-flex items-center gap-2 rounded-full border border-white/10 bg-white/5 px-4 py-2 backdrop-blur-sm">
-          <span className="bg-horizon-secondary flex h-2 w-2 animate-ping rounded-full"></span>
-          <span className="text-sm font-medium text-gray-300">
-            Segurança Cibernética de Elite
-          </span>
+      
+      <div className="max-w-7xl mx-auto px-6 relative z-10 grid md:grid-cols-2 gap-16 items-center">
+        <div className="text-left">
+          <NewBadge text="Sistema de Defesa Ativo v4.0" />
+          <h1 className="text-5xl md:text-7xl font-black text-white mb-8 leading-[1.1] tracking-tight drop-shadow-[0_0_25px_rgba(255,255,255,0.2)]">
+            Segurança Cibernética <br />
+            <span className="text-transparent bg-clip-text bg-gradient-to-r from-indigo-400 via-purple-400 to-cyan-400 animate-gradient-x">simplificada</span>
+          </h1>
+          <p className="text-lg md:text-xl text-gray-400 max-w-xl mb-12 leading-relaxed font-medium border-l-4 border-indigo-500/50 pl-6 bg-indigo-500/5 py-2 rounded-r-lg">
+            Protegemos sua empresa contra ameaças digitais com soluções robustas e estratégicas.
+          </p>
+          <div className="flex flex-col sm:flex-row items-start gap-6">
+            <Link href="/contato"><Button variant="primary" icon={ChevronRight}>INICIAR DIAGNÓSTICO</Button></Link>
+            <Link href="#servicos"><Button variant="secondary">EXPLORAR SOLUÇÕES</Button></Link>
+          </div>
         </div>
 
-        {/* Título Principal */}
-        <h1 className="animate-fade-in-up text-5xl leading-tight font-bold text-white [animation-delay:200ms] md:text-7xl">
-          Proteção Além do Horizonte Digital
-          <br />
-        </h1>
-
-        {/* Subtítulo */}
-        <p className="animate-fade-in-up mx-auto mb-10 max-w-2xl text-lg leading-relaxed text-gray-400 [animation-delay:400ms] md:text-xl">
-          Monitoramento 24/7, defesa ativa e inteligência artificial para
-          blindar sua infraestrutura contra ameaças do futuro.
-        </p>
-
-        {/* Botões de Ação */}
-        <div className="animate-fade-in-up flex flex-col items-center justify-center gap-4 [animation-delay:600ms] sm:flex-row">
-          <Link
-            href="/contato"
-            className="from-horizon-primary to-horizon-secondary shadow-horizon-primary/25 hover:shadow-horizon-primary/50 flex w-full transform items-center justify-center gap-2 rounded-full bg-gradient-to-r px-8 py-4 font-bold text-white shadow-lg transition-all hover:-translate-y-1 sm:w-auto"
-          >
-            Proteger Agora <ArrowRight size={20} />
-          </Link>
-          <Link
-            href="/servicos"
-            className="w-full rounded-full border border-white/10 bg-white/5 px-8 py-4 font-semibold text-white backdrop-blur-sm transition-all hover:bg-white/10 sm:w-auto"
-          >
-            Ver Soluções
-          </Link>
-        </div>
-
-        {/* Cards Flutuantes (Feature Highlights) */}
-        <div className="animate-fade-in-up mx-auto mt-20 grid max-w-5xl grid-cols-1 gap-6 [animation-delay:800ms] md:grid-cols-3">
-          {[
-            {
-              icon: <Shield className="text-horizon-secondary" />,
-              title: "Defesa Ativa",
-              desc: "Bloqueio de ameaças em tempo real.",
-            },
-            {
-              icon: <Lock className="text-horizon-primary" />,
-              title: "Criptografia Militar",
-              desc: "Seus dados blindados ponta a ponta.",
-            },
-            {
-              icon: <Activity className="text-green-400" />,
-              title: "Monitoramento 24/7",
-              desc: "Vigilância constante do seu perímetro.",
-            },
-          ].map((item, idx) => (
-            <div
-              key={idx}
-              className="group hover:border-horizon-primary/50 rounded-2xl border border-white/10 bg-white/5 p-6 text-left backdrop-blur-md transition-colors"
-            >
-              <div className="mb-4 w-fit rounded-lg bg-white/5 p-3 transition-colors group-hover:bg-white/10">
-                {item.icon}
+        {/* Painel 3D CSS (Substitui Landing.jpg) */}
+        <div className="relative h-[400px] md:h-[500px] flex items-center justify-center perspective-1000 group">
+           <div className="absolute inset-0 bg-gradient-to-b from-transparent via-indigo-500/10 to-transparent h-[20%] w-full animate-scanline pointer-events-none z-30"></div>
+           <div className="relative z-20 w-full h-full rounded-3xl overflow-hidden border border-white/10 shadow-[0_0_50px_rgba(79,70,229,0.3)] transform rotate-y-[-12deg] rotate-x-[8deg] transition-all duration-700 group-hover:rotate-0 group-hover:scale-105 bg-[#050505] flex flex-col">
+              <div className="h-10 border-b border-white/10 flex items-center px-4 gap-2 bg-white/5">
+                 <div className="w-3 h-3 rounded-full bg-red-500/50"></div>
+                 <div className="w-3 h-3 rounded-full bg-yellow-500/50"></div>
+                 <div className="w-3 h-3 rounded-full bg-green-500/50"></div>
               </div>
-              <h3 className="mb-2 text-lg font-bold text-white">
-                {item.title}
-              </h3>
-              <p className="text-sm text-gray-400">{item.desc}</p>
-            </div>
-          ))}
+              <div className="p-6 grid grid-cols-2 gap-4 h-full relative overflow-hidden">
+                 <div className="col-span-2 bg-indigo-500/10 rounded-xl border border-indigo-500/20 p-4 flex items-center justify-between">
+                    <div className="flex items-center gap-3"><Activity className="text-indigo-400" /><div><div className="text-xs text-gray-400">Status</div><div className="text-white font-mono">OPERACIONAL</div></div></div>
+                    <div className="h-2 w-2 rounded-full bg-green-500 animate-pulse"></div>
+                 </div>
+                 <div className="bg-white/5 rounded-xl border border-white/5 p-4 flex flex-col justify-center items-center gap-2">
+                    <ShieldCheck size={32} className="text-emerald-400" /><div className="text-2xl font-bold text-white">100%</div><div className="text-xs text-gray-500 uppercase">Proteção</div>
+                 </div>
+                 <div className="bg-white/5 rounded-xl border border-white/5 p-4 flex flex-col justify-center items-center gap-2">
+                    <Lock size={32} className="text-purple-400" /><div className="text-2xl font-bold text-white">AES-256</div><div className="text-xs text-gray-500 uppercase">Cripto</div>
+                 </div>
+              </div>
+           </div>
         </div>
       </div>
-    </section>
+    </div>
   );
 }
