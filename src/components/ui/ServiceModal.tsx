@@ -9,9 +9,12 @@ export function ServiceModal({ service, onClose }: any) {
   const modalRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
-    if (service) requestAnimationFrame(() => setIsVisible(true));
-    else setIsVisible(false);
-  }, [service]);
+    if (service) {
+      requestAnimationFrame(() => setIsVisible(true));
+    } else {
+      setIsVisible(false);
+    }
+  }, [service]); // <--- AQUI: A dependência 'service' é obrigatória para o Lint
 
   if (!service) return null;
   const Icon = service.icon;
@@ -22,6 +25,7 @@ export function ServiceModal({ service, onClose }: any) {
         onClick={onClose}
         className={`absolute inset-0 bg-[#000000]/80 backdrop-blur-xl transition-opacity duration-500 ${isVisible ? "opacity-100" : "opacity-0"}`}
       ></div>
+
       <div
         ref={modalRef}
         className={`tech-border-glow relative flex max-h-[85vh] w-full max-w-3xl transform flex-col overflow-hidden rounded-2xl border border-white/10 bg-[#0A0A0A] shadow-[0_0_50px_rgba(99,102,241,0.2)] transition-all duration-500 ${isVisible ? "translate-y-0 scale-100 opacity-100" : "translate-y-8 scale-95 opacity-0"}`}
@@ -29,12 +33,14 @@ export function ServiceModal({ service, onClose }: any) {
         <div
           className={`absolute top-0 left-0 h-1.5 w-full bg-gradient-to-r from-${service.color}-600 via-${service.color}-400 to-${service.color}-600`}
         ></div>
+
         <button
           onClick={onClose}
           className="absolute top-5 right-5 z-10 rounded-full p-2 text-gray-400 transition-all hover:bg-white/10 hover:text-white"
         >
           <X size={24} />
         </button>
+
         <div className="custom-scrollbar overflow-y-auto p-8 md:p-10">
           <div className="mb-10 flex flex-col items-start gap-6 md:flex-row md:items-center">
             <div
@@ -61,9 +67,11 @@ export function ServiceModal({ service, onClose }: any) {
               </div>
             </div>
           </div>
+
           <p className="mb-10 text-lg leading-relaxed text-gray-300">
             {service.fullDesc}
           </p>
+
           <div className="flex justify-end gap-4 border-t border-white/10 pt-6">
             <Button variant="ghost" onClick={onClose}>
               Fechar
