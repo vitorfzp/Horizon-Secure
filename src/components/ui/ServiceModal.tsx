@@ -3,8 +3,14 @@ import React, { useState, useEffect, useRef } from "react";
 import { X, ArrowRight } from "lucide-react";
 import { Button } from "./Button";
 import Link from "next/link";
+import { Service } from "@/types";
 
-export function ServiceModal({ service, onClose }: any) {
+interface ServiceModalProps {
+  service: Service | null;
+  onClose: () => void;
+}
+
+export function ServiceModal({ service, onClose }: ServiceModalProps) {
   const [isVisible, setIsVisible] = useState(false);
   const modalRef = useRef<HTMLDivElement>(null);
 
@@ -14,7 +20,7 @@ export function ServiceModal({ service, onClose }: any) {
     } else {
       setIsVisible(false);
     }
-  }, [service]); // <--- AQUI: A dependência 'service' é obrigatória para o Lint
+  }, [service]);
 
   if (!service) return null;
   const Icon = service.icon;
@@ -56,7 +62,7 @@ export function ServiceModal({ service, onClose }: any) {
                 {service.title}
               </h2>
               <div className="flex flex-wrap gap-2">
-                {service.benefits.map((benefit: string, i: number) => (
+                {service.benefits.map((benefit, i) => (
                   <span
                     key={i}
                     className={`rounded-md px-3 py-1.5 font-mono text-xs font-bold tracking-wider uppercase bg-${service.color}-500/10 text-${service.color}-300 border border-${service.color}-500/20`}
