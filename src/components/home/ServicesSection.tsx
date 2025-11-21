@@ -67,7 +67,7 @@ const ServiceCard = ({
 export function ServicesSection() {
   const [modalService, setModalService] = useState<Service | null>(null);
 
-  // Converte os valores do objeto para um array de Service explicitamente
+  // AQUI ESTA A CORREÇÃO: Forçamos o TypeScript a entender que é uma lista de Service
   const servicesList = Object.values(servicesData) as unknown as Service[];
 
   return (
