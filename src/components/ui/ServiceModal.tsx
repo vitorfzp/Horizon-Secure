@@ -3,9 +3,8 @@ import React, { useState, useEffect, useRef } from "react";
 import { X, ArrowRight } from "lucide-react";
 import { Button } from "./Button";
 import Link from "next/link";
-import { Service } from "@/types"; // Importando o tipo
+import { Service } from "@/types";
 
-// Definindo as props do componente
 interface ServiceModalProps {
   service: Service | null;
   onClose: () => void;
@@ -26,6 +25,9 @@ export function ServiceModal({ service, onClose }: ServiceModalProps) {
   if (!service) return null;
   const Icon = service.icon;
 
+  // Mapeamento de cores para o gradiente do modal
+  const color = service.color;
+
   return (
     <div className="fixed inset-0 z-[100] flex items-center justify-center p-4 sm:p-6">
       <div
@@ -38,7 +40,7 @@ export function ServiceModal({ service, onClose }: ServiceModalProps) {
         className={`tech-border-glow relative flex max-h-[85vh] w-full max-w-3xl transform flex-col overflow-hidden rounded-2xl border border-white/10 bg-[#0A0A0A] shadow-[0_0_50px_rgba(99,102,241,0.2)] transition-all duration-500 ${isVisible ? "translate-y-0 scale-100 opacity-100" : "translate-y-8 scale-95 opacity-0"}`}
       >
         <div
-          className={`absolute top-0 left-0 h-1.5 w-full bg-gradient-to-r from-${service.color}-600 via-${service.color}-400 to-${service.color}-600`}
+          className={`absolute top-0 left-0 h-1.5 w-full bg-gradient-to-r from-${color}-600 via-${color}-400 to-${color}-600`}
         ></div>
 
         <button
@@ -51,10 +53,10 @@ export function ServiceModal({ service, onClose }: ServiceModalProps) {
         <div className="custom-scrollbar overflow-y-auto p-8 md:p-10">
           <div className="mb-10 flex flex-col items-start gap-6 md:flex-row md:items-center">
             <div
-              className={`h-24 w-24 shrink-0 rounded-2xl bg-${service.color}-500/10 border border-${service.color}-500/30 relative flex items-center justify-center overflow-hidden p-5 shadow-[0_0_40px_rgba(99,102,241,0.3)]`}
+              className={`h-24 w-24 shrink-0 rounded-2xl bg-${color}-500/10 border border-${color}-500/30 relative flex items-center justify-center overflow-hidden p-5 shadow-[0_0_40px_rgba(99,102,241,0.3)]`}
             >
               <Icon
-                className={`text-${service.color}-400 relative z-10 h-full w-full`}
+                className={`text-${color}-400 relative z-10 h-full w-full`}
                 strokeWidth={1.5}
               />
             </div>
@@ -66,7 +68,7 @@ export function ServiceModal({ service, onClose }: ServiceModalProps) {
                 {service.benefits.map((benefit, i) => (
                   <span
                     key={i}
-                    className={`rounded-md px-3 py-1.5 font-mono text-xs font-bold tracking-wider uppercase bg-${service.color}-500/10 text-${service.color}-300 border border-${service.color}-500/20`}
+                    className={`rounded-md px-3 py-1.5 font-mono text-xs font-bold tracking-wider uppercase bg-${color}-500/10 text-${color}-300 border border-${color}-500/20`}
                   >
                     {benefit}
                   </span>

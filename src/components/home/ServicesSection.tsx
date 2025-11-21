@@ -6,18 +6,16 @@ import { ServiceModal } from "@/components/ui/ServiceModal";
 import { servicesData } from "@/data/services";
 import { Service } from "@/types";
 
-// Card Interno Tipado
-const ServiceCard = ({
-  service,
-  onOpen,
-}: {
+interface ServiceCardProps {
   service: Service;
   onOpen: (s: Service) => void;
-}) => {
+}
+
+const ServiceCard = ({ service, onOpen }: ServiceCardProps) => {
   const Icon = service.icon;
   const color = service.color;
 
-  // Mapeamento de cores
+  // Mapeamento seguro de cores para o Tailwind (evita classes dinâmicas quebradas)
   const glowColor =
     color === "indigo"
       ? "99,102,241"
@@ -67,7 +65,7 @@ const ServiceCard = ({
 export function ServicesSection() {
   const [modalService, setModalService] = useState<Service | null>(null);
 
-  // AQUI ESTA A CORREÇÃO: Forçamos o TypeScript a entender que é uma lista de Service
+  // Conversão explícita dos dados para o tipo Service[]
   const servicesList = Object.values(servicesData) as unknown as Service[];
 
   return (
