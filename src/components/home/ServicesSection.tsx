@@ -15,7 +15,6 @@ const ServiceCard = ({ service, onOpen }: ServiceCardProps) => {
   const Icon = service.icon;
   const color = service.color;
 
-  // Mapeamento seguro de cores
   const glowColor =
     color === "indigo"
       ? "99,102,241"
@@ -64,8 +63,6 @@ const ServiceCard = ({ service, onOpen }: ServiceCardProps) => {
 
 export function ServicesSection() {
   const [modalService, setModalService] = useState<Service | null>(null);
-
-  // Conversão explícita dos dados para o tipo Service[]
   const servicesList = Object.values(servicesData) as unknown as Service[];
 
   return (
