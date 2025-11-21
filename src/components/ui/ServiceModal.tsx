@@ -3,8 +3,9 @@ import React, { useState, useEffect, useRef } from "react";
 import { X, ArrowRight } from "lucide-react";
 import { Button } from "./Button";
 import Link from "next/link";
-import { Service } from "@/types";
+import { Service } from "@/types"; // Importando o tipo
 
+// Definindo as props do componente
 interface ServiceModalProps {
   service: Service | null;
   onClose: () => void;

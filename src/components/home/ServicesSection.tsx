@@ -4,9 +4,9 @@ import { Plus } from "lucide-react";
 import { SectionTitle } from "@/components/ui/SectionTitle";
 import { ServiceModal } from "@/components/ui/ServiceModal";
 import { servicesData } from "@/data/services";
-import { Service } from "@/types";
+import { Service } from "@/types"; // Importando o tipo
 
-// Card Interno Tipado
+// Tipando as props do Card
 const ServiceCard = ({
   service,
   onOpen,
@@ -17,7 +17,7 @@ const ServiceCard = ({
   const Icon = service.icon;
   const color = service.color;
 
-  // Estilos dinâmicos baseados na cor
+  // Mapeamento de cores para evitar classes dinâmicas quebradas e satisfazer o lint
   const glowColor =
     color === "indigo"
       ? "99,102,241"
@@ -65,19 +65,21 @@ const ServiceCard = ({
 };
 
 export function ServicesSection() {
+  // Tipando o estado
   const [modalService, setModalService] = useState<Service | null>(null);
 
   return (
     <>
       <div className="animate-fade-in relative py-24" id="servicos">
         <div className="relative z-10 mx-auto max-w-7xl px-6">
-          {/* CORREÇÃO: Texto simplificado sem aspas simples para evitar erro de Lint */}
+          {/* Correção de aspas no título */}
           <SectionTitle subtitle="Clique no ícone + para ver detalhes completos.">
             Nossos Serviços
           </SectionTitle>
 
           <div className="grid grid-cols-1 gap-6 md:grid-cols-2 lg:grid-cols-3">
             {Object.values(servicesData).map((service) => (
+              // Forçando a tipagem aqui pois servicesData vem de um objeto JS
               <ServiceCard
                 key={service.id}
                 service={service as Service}
