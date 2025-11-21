@@ -18,7 +18,9 @@ export function ServiceModal({ service, onClose }: ServiceModalProps) {
     if (service) {
       requestAnimationFrame(() => setIsVisible(true));
     } else {
-      setIsVisible(false);
+      // CORREÇÃO: Timeout para evitar erro de Lint (state update in effect)
+      const timer = setTimeout(() => setIsVisible(false), 0);
+      return () => clearTimeout(timer);
     }
   }, [service]);
 
