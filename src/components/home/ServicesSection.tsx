@@ -15,7 +15,7 @@ const ServiceCard = ({ service, onOpen }: ServiceCardProps) => {
   const Icon = service.icon;
   const color = service.color;
 
-  // Mapeamento seguro de cores para o Tailwind (evita classes dinâmicas quebradas)
+  // Mapeamento seguro de cores
   const glowColor =
     color === "indigo"
       ? "99,102,241"

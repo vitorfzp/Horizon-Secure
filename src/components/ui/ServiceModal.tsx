@@ -24,8 +24,6 @@ export function ServiceModal({ service, onClose }: ServiceModalProps) {
 
   if (!service) return null;
   const Icon = service.icon;
-
-  // Mapeamento de cores para o gradiente do modal
   const color = service.color;
 
   return (
