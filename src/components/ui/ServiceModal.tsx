@@ -3,7 +3,7 @@ import React, { useState, useEffect, useRef } from "react";
 import { X, ArrowRight } from "lucide-react";
 import { Button } from "./Button";
 import Link from "next/link";
-import { Service } from "@/types"; // Importa o tipo que criamos acima
+import { Service } from "@/types";
 
 interface ServiceModalProps {
   service: Service | null;

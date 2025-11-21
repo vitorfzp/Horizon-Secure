@@ -4,7 +4,7 @@ import { Plus } from "lucide-react";
 import { SectionTitle } from "@/components/ui/SectionTitle";
 import { ServiceModal } from "@/components/ui/ServiceModal";
 import { servicesData } from "@/data/services";
-import { Service } from "@/types"; // Importa o tipo
+import { Service } from "@/types";
 
 interface ServiceCardProps {
   service: Service;
@@ -15,7 +15,7 @@ const ServiceCard = ({ service, onOpen }: ServiceCardProps) => {
   const Icon = service.icon;
   const color = service.color;
 
-  // Mapeamento explícito de cores para evitar problemas com Tailwind e Lint
+  // Mapeamento seguro de cores
   const glowColor =
     color === "indigo"
       ? "99,102,241"
@@ -65,7 +65,7 @@ const ServiceCard = ({ service, onOpen }: ServiceCardProps) => {
 export function ServicesSection() {
   const [modalService, setModalService] = useState<Service | null>(null);
 
-  // AQUI ESTÁ O SEGREDO: Forçar o tipo Service[]
+  // AQUI ESTÁ A MÁGICA: Dizemos ao TypeScript que isso é uma lista de Serviços
   const servicesList = Object.values(servicesData) as unknown as Service[];
 
   return (
