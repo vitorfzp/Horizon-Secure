@@ -1,17 +1,16 @@
-// src/app/page.tsx
-
-// 1. Importe os novos componentes da Home
 import { HeroSection } from "@/components/home/HeroSection";
-import { ServicesHighlight } from "@/components/home/ServicesHighlight";
+import { ProblemSection } from "@/components/home/ProblemSection";
 import { CallToAction } from "@/components/home/CallToAction";
+import { ServicesSection } from "@/components/home/ServicesSection";
 
 export default function Home() {
   return (
-    <div>
-      {/* 2. Renderize os componentes em ordem */}
+    <main className="bg-[#000000] min-h-screen overflow-hidden">
       <HeroSection />
-      <ServicesHighlight />
+      <ProblemSection />
+      {/* Use o novo componente aqui */}
+      <ServicesSection />
       <CallToAction />
-    </div>
+    </main>
   );
 }
