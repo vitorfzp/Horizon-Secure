@@ -5,7 +5,7 @@ import { CallToAction } from "@/components/home/CallToAction";
 
 export default function Home() {
   return (
-    <main className="bg-[#000000] min-h-screen overflow-hidden">
+    <main className="min-h-screen overflow-hidden bg-[#000000]">
       <HeroSection />
       <ProblemSection />
       <ServicesSection />

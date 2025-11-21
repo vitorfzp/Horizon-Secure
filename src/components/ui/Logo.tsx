@@ -9,7 +9,7 @@ export function Logo() {
         viewBox="0 0 100 100"
         fill="none"
         xmlns="http://www.w3.org/2000/svg"
-        className="h-10 w-10 animate-float sm:h-12 sm:w-12"
+        className="animate-float h-10 w-10 sm:h-12 sm:w-12"
       >
         <defs>
           <linearGradient id="planetGrad" x1="0" y1="0" x2="100" y2="100">
@@ -39,10 +39,10 @@ export function Logo() {
 
       {/* Texto da Logo */}
       <div className="flex flex-col">
-        <span className="leading-none text-xl font-extrabold tracking-tight text-white sm:text-2xl font-mono">
+        <span className="font-mono text-xl leading-none font-extrabold tracking-tight text-white sm:text-2xl">
           HORIZON
         </span>
-        <span className="text-[10px] font-semibold uppercase tracking-[0.3em] text-cyan-400 sm:text-xs">
+        <span className="text-[10px] font-semibold tracking-[0.3em] text-cyan-400 uppercase sm:text-xs">
           SECURE
         </span>
       </div>

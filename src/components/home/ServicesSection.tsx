@@ -1,35 +1,54 @@
 "use client";
-import React, { useState } from 'react';
-import { Plus } from 'lucide-react';
-import { SectionTitle } from '@/components/ui/SectionTitle';
-import { ServiceModal } from '@/components/ui/ServiceModal';
-import { servicesData } from '@/data/services';
+import React, { useState } from "react";
+import { Plus } from "lucide-react";
+import { SectionTitle } from "@/components/ui/SectionTitle";
+import { ServiceModal } from "@/components/ui/ServiceModal";
+import { servicesData } from "@/data/services";
 
 export function ServicesSection() {
   const [modalService, setModalService] = useState(null);
 
   return (
     <>
-      <div className="py-24 animate-fade-in relative" id="servicos">
-        <div className="max-w-7xl mx-auto px-6 relative z-10">
-          <SectionTitle subtitle="Clique no '+' para ver detalhes completos.">Nossos Serviços</SectionTitle>
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+      <div className="animate-fade-in relative py-24" id="servicos">
+        <div className="relative z-10 mx-auto max-w-7xl px-6">
+          <SectionTitle subtitle="Clique no '+' para ver detalhes completos.">
+            Nossos Serviços
+          </SectionTitle>
+          <div className="grid grid-cols-1 gap-6 md:grid-cols-2 lg:grid-cols-3">
             {Object.values(servicesData).map((service: any) => (
-              <div key={service.id} className={`group relative p-6 rounded-2xl bg-[#080808] border border-white/[0.08] transition-all duration-500 flex flex-col hover:border-${service.color}-500/50 hover:-translate-y-1 tech-border-glow`}>
-                <div className="flex justify-between items-start mb-6">
-                    <div className={`w-14 h-14 rounded-xl flex items-center justify-center bg-white/[0.03] border border-white/[0.08] group-hover:bg-${service.color}-500/10`}>
-                        <service.icon className={`text-gray-400 group-hover:text-${service.color}-400 transition-colors`} />
-                    </div>
-                    <button onClick={() => setModalService(service)} className="w-8 h-8 rounded-full flex items-center justify-center border border-white/10 text-gray-400 hover:bg-white/20"><Plus size={16} /></button>
+              <div
+                key={service.id}
+                className={`group relative flex flex-col rounded-2xl border border-white/[0.08] bg-[#080808] p-6 transition-all duration-500 hover:border-${service.color}-500/50 tech-border-glow hover:-translate-y-1`}
+              >
+                <div className="mb-6 flex items-start justify-between">
+                  <div
+                    className={`flex h-14 w-14 items-center justify-center rounded-xl border border-white/[0.08] bg-white/[0.03] group-hover:bg-${service.color}-500/10`}
+                  >
+                    <service.icon
+                      className={`text-gray-400 group-hover:text-${service.color}-400 transition-colors`}
+                    />
+                  </div>
+                  <button
+                    onClick={() => setModalService(service)}
+                    className="flex h-8 w-8 items-center justify-center rounded-full border border-white/10 text-gray-400 hover:bg-white/20"
+                  >
+                    <Plus size={16} />
+                  </button>
                 </div>
-                <h3 className="text-lg font-semibold text-gray-100 mb-3">{service.title}</h3>
-                <p className="text-gray-500 text-sm">{service.shortDesc}</p>
+                <h3 className="mb-3 text-lg font-semibold text-gray-100">
+                  {service.title}
+                </h3>
+                <p className="text-sm text-gray-500">{service.shortDesc}</p>
               </div>
             ))}
           </div>
         </div>
       </div>
-      <ServiceModal service={modalService} onClose={() => setModalService(null)} />
+      <ServiceModal
+        service={modalService}
+        onClose={() => setModalService(null)}
+      />
     </>
   );
 }

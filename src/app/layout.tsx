@@ -1,17 +1,17 @@
-import type { Metadata } from 'next';
-import { Inter } from 'next/font/google';
-import './globals.css';
+import type { Metadata } from "next";
+import { Inter } from "next/font/google";
+import "./globals.css";
 
-import { Header } from '@/layouts/Header';
-import { Footer } from '@/layouts/Footer';
+import { Header } from "@/layouts/Header";
+import { Footer } from "@/layouts/Footer";
 
-const inter = Inter({ subsets: ['latin'], variable: "--font-inter" });
+const inter = Inter({ subsets: ["latin"], variable: "--font-inter" });
 
 export const metadata: Metadata = {
-  title: 'Horizon Secure',
-  description: 'Sua fortaleza digital',
+  title: "Horizon Secure",
+  description: "Sua fortaleza digital",
   icons: {
-    icon: '/icon.svg', // Usa o SVG que acabamos de criar
+    icon: "/icon.svg", // Usa o SVG que acabamos de criar
   },
 };
 
@@ -22,7 +22,9 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="pt-BR">
-      <body className={`${inter.className} flex min-h-screen flex-col bg-black text-white`}>
+      <body
+        className={`${inter.className} flex min-h-screen flex-col bg-black text-white`}
+      >
         <Header />
         <main className="flex-grow">{children}</main>
         <Footer />
