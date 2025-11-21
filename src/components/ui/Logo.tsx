@@ -4,7 +4,7 @@ import React from "react";
 export function Logo() {
   return (
     <div className="flex items-center gap-3">
-      {/* Ícone do Saturno Animado */}
+      {/* Ícone do Saturno Animado (SVG Puro) */}
       <svg
         viewBox="0 0 100 100"
         fill="none"
@@ -13,12 +13,12 @@ export function Logo() {
       >
         <defs>
           <linearGradient id="planetGrad" x1="0" y1="0" x2="100" y2="100">
-            <stop offset="0%" stopColor="#8B5CF6" /> {/* Roxo */}
-            <stop offset="100%" stopColor="#3B82F6" /> {/* Azul */}
+            <stop offset="0%" stopColor="#6366f1" /> {/* Indigo */}
+            <stop offset="100%" stopColor="#a855f7" /> {/* Purple */}
           </linearGradient>
           <linearGradient id="ringGrad" x1="0" y1="0" x2="100" y2="100">
-            <stop offset="0%" stopColor="#06B6D4" /> {/* Ciano */}
-            <stop offset="100%" stopColor="#A855F7" /> {/* Roxo Claro */}
+            <stop offset="0%" stopColor="#06B6D4" /> {/* Cyan */}
+            <stop offset="100%" stopColor="#818cf8" /> {/* Indigo Light */}
           </linearGradient>
         </defs>
 
@@ -39,10 +39,10 @@ export function Logo() {
 
       {/* Texto da Logo */}
       <div className="flex flex-col">
-        <span className="text-xl leading-none font-extrabold tracking-tight text-white sm:text-2xl">
+        <span className="font-mono text-xl leading-none font-extrabold tracking-tight text-white sm:text-2xl">
           HORIZON
         </span>
-        <span className="text-horizon-secondary text-[10px] font-semibold tracking-[0.3em] uppercase sm:text-xs">
+        <span className="text-[10px] font-semibold tracking-[0.3em] text-cyan-400 uppercase sm:text-xs">
           SECURE
         </span>
       </div>
