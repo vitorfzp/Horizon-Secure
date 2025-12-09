@@ -1,61 +1,113 @@
-"use client";
-import React from 'react';
-import { Reveal } from '@/components/ui/Reveal';
-import { HackerText } from '@/components/ui/HackerText';
-import { Shield, Users, Target, Zap } from 'lucide-react';
+// src/app/servicos/page.tsx
+import { Metadata } from "next";
+import Link from "next/link";
+import {
+  Code,
+  ShieldAlert,
+  Activity,
+  Lock,
+  FileText,
+  ArrowRight,
+} from "lucide-react";
 
-export default function SobrePage() {
-  const values = [
-    { icon: Shield, title: "Integridade", text: "Transparência total em cada relatório e diagnóstico." },
-    { icon: Users, title: "Parceria", text: "Atuamos como extensão do seu time, não apenas fornecedores." },
-    { icon: Target, title: "Precisão", text: "Foco cirúrgico nas vulnerabilidades que realmente importam." },
-    { icon: Zap, title: "Velocidade", text: "Resposta a incidentes em tempo recorde." }
-  ];
+export const metadata: Metadata = {
+  title: "Nossos Serviços | Horizon Secure",
+  description: "Descubra como protegemos sua organização.",
+};
 
+const servicos = [
+  {
+    id: 1,
+    nome: "Arquitetura DevSecOps",
+    descricao:
+      "Segurança integrada no ciclo de vida do software (SDLC). Automatizamos a proteção desde o primeiro commit até a produção.",
+    icon: <Code className="text-horizon-primary" size={32} />,
+  },
+  {
+    id: 2,
+    nome: "Pentest & Red Team",
+    descricao:
+      "Simulação de ataques reais para identificar vulnerabilidades em aplicações e infraestrutura antes que criminosos o façam.",
+    icon: <ShieldAlert className="text-red-500" size={32} />,
+  },
+  {
+    id: 3,
+    nome: "SOC as a Service",
+    descricao:
+      "Monitoramento 24/7 com inteligência de ameaças e resposta rápida a incidentes para mitigar riscos em tempo real.",
+    icon: <Activity className="text-green-400" size={32} />,
+  },
+  {
+    id: 4,
+    nome: "Gestão de Identidade (IAM)",
+    descricao:
+      "Implementação de SSO, MFA e governança de acesso para garantir que apenas as pessoas certas acessem seus recursos.",
+    icon: <Lock className="text-horizon-secondary" size={32} />,
+  },
+  {
+    id: 5,
+    nome: "Consultoria GRC",
+    descricao:
+      "Adequação à LGPD, ISO 27001 e PCI-DSS. Avaliação de riscos e implementação de controles de conformidade.",
+    icon: <FileText className="text-horizon-accent" size={32} />,
+  },
+];
+
+export default function ServicosPage() {
   return (
-    <div className="min-h-screen bg-black pt-32 pb-20 px-6">
-      <div className="max-w-4xl mx-auto">
-        <Reveal>
-          <h1 className="text-4xl md:text-6xl font-black text-white mb-8">
-            <span className="text-indigo-500">/</span> <HackerText text="Quem Somos" />
-          </h1>
-        </Reveal>
+    <div className="bg-horizon-bg min-h-screen pt-20">
+      {/* Header */}
+      <section className="relative px-6 py-20 text-center">
+        <div className="bg-horizon-secondary/10 absolute top-1/2 left-1/2 -z-10 h-[500px] w-[500px] -translate-x-1/2 -translate-y-1/2 blur-[120px]"></div>
+        <h1 className="mb-6 text-4xl font-bold text-white md:text-6xl">
+          Nossos Serviços
+        </h1>
+        <p className="mx-auto max-w-2xl text-lg text-gray-400">
+          Soluções completas de cibersegurança desenhadas para blindar sua
+          organização contra as ameaças digitais mais avançadas.
+        </p>
+      </section>
 
-        <div className="grid md:grid-cols-2 gap-12 items-center mb-24">
-          <Reveal direction="left">
-            <p className="text-xl text-gray-300 leading-relaxed">
-              A <span className="text-white font-bold">Horizon Secure</span> nasceu da necessidade de proteger o futuro digital. Em um mundo onde dados são o novo petróleo, nós somos a fortaleza que garante a continuidade do seu negócio.
-            </p>
-          </Reveal>
-          <Reveal direction="right" delay={200}>
-             <div className="p-6 border border-indigo-500/30 bg-indigo-500/5 rounded-2xl relative overflow-hidden">
-                <div className="absolute top-0 right-0 w-20 h-20 bg-indigo-500/20 blur-2xl rounded-full"></div>
-                <h3 className="text-2xl font-bold text-white mb-4">Nossa Missão</h3>
-                <p className="text-gray-400">&quot;Elevar o padrão de segurança cibernética, tornando defesas de nível militar acessíveis para empresas que constroem o futuro.&quot;</p>
-             </div>
-          </Reveal>
-        </div>
-
-        <Reveal delay={400}>
-          <h2 className="text-3xl font-bold text-white mb-12 text-center"><HackerText text="Nossos Valores" /></h2>
-        </Reveal>
-
-        <div className="grid md:grid-cols-2 gap-6">
-          {values.map((item, idx) => (
-            <Reveal key={idx} delay={idx * 150} direction="up">
-              <div className="flex items-start gap-4 p-6 bg-white/5 border border-white/10 rounded-xl hover:border-indigo-500/50 transition-colors group">
-                <div className="p-3 bg-indigo-500/10 rounded-lg text-indigo-400 group-hover:text-white group-hover:bg-indigo-600 transition-all">
-                  <item.icon size={24} />
-                </div>
-                <div>
-                  <h4 className="text-xl font-bold text-white mb-2">{item.title}</h4>
-                  <p className="text-gray-400 text-sm">{item.text}</p>
-                </div>
+      {/* Grid de Serviços */}
+      <section className="container mx-auto px-6 pb-24">
+        <div className="grid grid-cols-1 gap-6 md:grid-cols-2 lg:grid-cols-3">
+          {servicos.map((servico) => (
+            <div
+              key={servico.id}
+              className="group hover:border-horizon-primary/50 relative rounded-2xl border border-white/10 bg-white/5 p-8 backdrop-blur-sm transition-all duration-300 hover:-translate-y-1 hover:bg-white/[0.08]"
+            >
+              <div className="mb-6 w-fit rounded-xl border border-white/5 bg-white/5 p-3 transition-colors group-hover:border-white/10">
+                {servico.icon}
               </div>
-            </Reveal>
+              <h2 className="group-hover:text-horizon-primary mb-3 text-2xl font-bold text-white transition-colors">
+                {servico.nome}
+              </h2>
+              <p className="leading-relaxed text-gray-400">
+                {servico.descricao}
+              </p>
+            </div>
           ))}
         </div>
-      </div>
+      </section>
+
+      {/* CTA */}
+      <section className="border-t border-white/10 bg-white/5 py-20">
+        <div className="container mx-auto flex flex-col items-center px-6 text-center">
+          <h2 className="mb-4 text-3xl font-bold text-white">
+            Tem um Desafio Específico?
+          </h2>
+          <p className="mb-8 max-w-xl text-gray-400">
+            Nossos especialistas estão prontos para desenhar uma arquitetura de
+            segurança sob medida para o seu negócio.
+          </p>
+          <Link
+            href="/contato"
+            className="from-horizon-primary to-horizon-secondary shadow-horizon-primary/20 hover:shadow-horizon-primary/40 flex items-center gap-2 rounded-full bg-gradient-to-r px-8 py-4 font-bold text-white shadow-lg transition-all hover:-translate-y-1"
+          >
+            Fale Conosco <ArrowRight size={20} />
+          </Link>
+        </div>
+      </section>
     </div>
   );
 }
