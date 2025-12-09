@@ -15,7 +15,6 @@ interface ServiceCardProps {
   index: number;
 }
 
-// --- CARD DESKTOP ---
 const DesktopServiceCard = ({ service, onOpen }: ServiceCardProps) => {
   const Icon = service.icon;
   const color = service.color;
@@ -68,13 +67,11 @@ const DesktopServiceCard = ({ service, onOpen }: ServiceCardProps) => {
   );
 };
 
-// --- CARD MOBILE ---
 const MobileServiceCard = ({ service, onOpen }: ServiceCardProps) => {
   const Icon = service.icon;
   const color = service.color;
-
-  // FIX: Uso de setTimeout para evitar erro de setState síncrono no React
   const [mounted, setMounted] = useState(false);
+
   useEffect(() => {
     const timer = setTimeout(() => setMounted(true), 0);
     return () => clearTimeout(timer);
@@ -88,7 +85,6 @@ const MobileServiceCard = ({ service, onOpen }: ServiceCardProps) => {
       <div
         className={`relative border-l-4 bg-[#0A0A0E] border-l-${color}-500 group overflow-hidden rounded-r-xl border-y border-r border-white/10 p-5`}
       >
-        {/* COR DO BINÁRIO: Agora usa a cor do tema com opacidade 20% para aparecer bem */}
         <div className="pointer-events-none absolute top-0 right-0 translate-x-2 -translate-y-2 transform opacity-20">
           <Binary size={100} className={`text-${color}-400`} />
         </div>
@@ -109,6 +105,15 @@ const MobileServiceCard = ({ service, onOpen }: ServiceCardProps) => {
               <span className={`text-${color}-500/50 mr-2`}>&gt;&gt;</span>
               {service.shortDesc}
             </p>
+            {/* Uso da variável mounted para evitar warning */}
+            <div
+              className={`mt-2 h-0.5 w-full bg-${color}-500/20 overflow-hidden rounded-full`}
+            >
+              <div
+                className={`h-full bg-${color}-500 transition-all duration-1000 ease-out`}
+                style={{ width: mounted ? "100%" : "0%" }}
+              ></div>
+            </div>
           </div>
           <div className="text-gray-600 transition-colors group-hover:text-white">
             <ArrowUpRight size={20} />

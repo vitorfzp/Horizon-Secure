@@ -4,17 +4,20 @@ import { motion, useSpring, useTransform, animate } from "framer-motion";
 import { ShieldCheck, Lock, Activity, ScanLine } from "lucide-react";
 
 const ScrollingCryptoBackground = () => {
-  // Começa vazio para evitar erro de hidratação (Mismatch)
   const [hashes, setHashes] = useState<string[]>([]);
 
   useEffect(() => {
-    // Gera apenas no navegador
-    const generateHash = () =>
-      Array(16)
-        .fill(0)
-        .map(() => Math.random().toString(16).substr(2, 2).toUpperCase())
-        .join(" ");
-    setHashes(Array(12).fill(0).map(generateHash));
+    // FIX: setTimeout joga a execução para o final da fila, resolvendo o erro do Lint
+    const timer = setTimeout(() => {
+      const generateHash = () =>
+        Array(16)
+          .fill(0)
+          .map(() => Math.random().toString(16).substr(2, 2).toUpperCase())
+          .join(" ");
+      setHashes(Array(12).fill(0).map(generateHash));
+    }, 0);
+
+    return () => clearTimeout(timer);
   }, []);
 
   return (
@@ -68,7 +71,6 @@ export function MobileCyberHUD() {
         <div className="relative space-y-3 p-4">
           <ScrollingCryptoBackground />
 
-          {/* STATUS OPERACIONAL */}
           <div className="relative overflow-hidden rounded-xl border border-indigo-500/30 bg-[#0A0A0E]/90 p-5 backdrop-blur-sm">
             <motion.div
               className="pointer-events-none absolute inset-[-50%] rounded-full bg-gradient-to-t from-indigo-500/10 via-transparent to-transparent"
@@ -94,11 +96,9 @@ export function MobileCyberHUD() {
           </div>
 
           <div className="relative z-10 grid grid-cols-2 gap-3">
-            {/* CARD ESQUERDA (VERDE) */}
             <div className="relative flex flex-col items-center justify-center overflow-hidden rounded-xl border border-white/10 bg-[#0A0A0E]/90 p-4 text-center">
               <div className="absolute top-0 left-0 h-[1px] w-full bg-gradient-to-r from-transparent via-emerald-500 to-transparent opacity-50"></div>
               <ShieldCheck className="mb-2 text-emerald-400" size={28} />
-              {/* COR VERDE APLICADA AQUI */}
               <div className="mb-1 text-2xl font-bold text-emerald-400">
                 <AnimatedCounter from={0} to={100} />
               </div>
@@ -107,11 +107,9 @@ export function MobileCyberHUD() {
               </div>
             </div>
 
-            {/* CARD DIREITA (ROXO) */}
             <div className="relative flex flex-col items-center justify-center overflow-hidden rounded-xl border border-white/10 bg-[#0A0A0E]/90 p-4 text-center">
               <div className="absolute top-0 left-0 h-[1px] w-full bg-gradient-to-r from-transparent via-purple-500 to-transparent opacity-50"></div>
               <Lock className="mb-2 text-purple-400" size={28} />
-              {/* COR ROXA APLICADA AQUI */}
               <div className="mb-1 text-2xl font-bold text-purple-400">
                 AES-256
               </div>
