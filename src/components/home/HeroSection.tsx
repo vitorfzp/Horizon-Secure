@@ -1,7 +1,14 @@
 "use client";
 import React from "react";
 import Link from "next/link";
-import { ChevronRight, Activity, ShieldCheck, Lock } from "lucide-react";
+import {
+  ChevronRight,
+  Activity,
+  ShieldCheck,
+  Lock,
+  Radio,
+  Zap,
+} from "lucide-react";
 import { Button } from "@/components/ui/Button";
 import { NewBadge } from "@/components/ui/NewBadge";
 import { HackerText } from "@/components/ui/HackerText";
