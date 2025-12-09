@@ -7,7 +7,7 @@ const ScrollingCryptoBackground = () => {
   const [hashes, setHashes] = useState<string[]>([]);
 
   useEffect(() => {
-    // FIX: setTimeout joga a execução para o final da fila, resolvendo o erro do Lint
+    // FIX: setTimeout joga a execução para o próximo ciclo, resolvendo o erro do Lint
     const timer = setTimeout(() => {
       const generateHash = () =>
         Array(16)

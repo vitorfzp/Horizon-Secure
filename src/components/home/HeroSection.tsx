@@ -23,6 +23,7 @@ export function HeroSection() {
           <Reveal delay={0}>
             <NewBadge text="Sistema de Defesa Ativo v4.0" />
           </Reveal>
+
           <Reveal delay={200}>
             <h1 className="mb-6 text-4xl leading-[1.1] font-black tracking-tight text-white drop-shadow-[0_0_25px_rgba(255,255,255,0.2)] sm:text-5xl md:text-7xl">
               <HackerText
@@ -36,12 +37,14 @@ export function HeroSection() {
               </span>
             </h1>
           </Reveal>
+
           <Reveal delay={400}>
             <p className="mb-8 max-w-xl rounded-r-lg border-l-4 border-indigo-500/50 bg-indigo-500/5 py-2 pl-6 text-base leading-relaxed font-medium text-gray-400 sm:text-lg md:text-xl">
               Protegemos sua empresa contra ameaças digitais com soluções
               robustas e estratégicas.
             </p>
           </Reveal>
+
           <Reveal delay={600}>
             <div className="flex flex-col items-start gap-4 sm:flex-row">
               <Link href="/contato" className="w-full sm:w-auto">
@@ -68,6 +71,7 @@ export function HeroSection() {
 
         <div className="relative mt-8 flex w-full items-center justify-center md:mt-0">
           <MobileCyberHUD />
+
           <div className="perspective-1000 group hidden h-[500px] w-full items-center justify-center md:flex">
             <div className="animate-scanline pointer-events-none absolute inset-0 z-30 h-[20%] w-full bg-gradient-to-b from-transparent via-indigo-500/10 to-transparent"></div>
             <div className="relative z-20 flex h-full w-full rotate-x-[8deg] rotate-y-[-12deg] transform flex-col overflow-hidden rounded-3xl border border-white/10 bg-[#050505] shadow-[0_0_50px_rgba(79,70,229,0.3)] transition-all duration-700 group-hover:scale-105 group-hover:rotate-0">

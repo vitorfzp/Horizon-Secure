@@ -105,7 +105,7 @@ const MobileServiceCard = ({ service, onOpen }: ServiceCardProps) => {
               <span className={`text-${color}-500/50 mr-2`}>&gt;&gt;</span>
               {service.shortDesc}
             </p>
-            {/* Uso da variável mounted para evitar warning */}
+            {/* Aqui usamos a variável 'mounted' para animar a barrinha, resolvendo o warning */}
             <div
               className={`mt-2 h-0.5 w-full bg-${color}-500/20 overflow-hidden rounded-full`}
             >
