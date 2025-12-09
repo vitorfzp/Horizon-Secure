@@ -63,8 +63,7 @@ const MobileServiceCard = ({ service, onOpen, index }: ServiceCardProps) => {
   const [mounted, setMounted] = useState(false);
   
   useEffect(() => { 
-    // CORREÇÃO: setTimeout para evitar erro
-    const timer = setTimeout(() => setMounted(true), 0);
+    const timer = setTimeout(() => setMounted(true), 10);
     return () => clearTimeout(timer);
   }, []);
 
