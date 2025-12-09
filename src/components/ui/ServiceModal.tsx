@@ -16,9 +16,11 @@ export function ServiceModal({ service, onClose }: ServiceModalProps) {
 
   useEffect(() => {
     if (service) {
-      requestAnimationFrame(() => setIsVisible(true));
+      // Entrada suave
+      const frame = requestAnimationFrame(() => setIsVisible(true));
+      return () => cancelAnimationFrame(frame);
     } else {
-      // CORREÇÃO: Timeout para evitar erro de Lint (state update in effect)
+      // SAÍDA SEGURA (Correção do Erro Crítico)
       const timer = setTimeout(() => setIsVisible(false), 0);
       return () => clearTimeout(timer);
     }

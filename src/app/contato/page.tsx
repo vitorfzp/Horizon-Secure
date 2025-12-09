@@ -1,150 +1,120 @@
-// src/app/contato/page.tsx
-import { Metadata } from "next";
-import { Mail, MapPin, Phone, Clock } from "lucide-react";
-
-export const metadata: Metadata = {
-  title: "Contato | Horizon Secure",
-  description: "Entre em contato com nossos especialistas em segurança.",
-};
+"use client";
+import React from "react";
+import { Reveal } from "@/components/ui/Reveal";
+import { HackerText } from "@/components/ui/HackerText";
+import { Button } from "@/components/ui/Button";
+import { Send, Mail, MapPin, Phone } from "lucide-react";
 
 export default function ContatoPage() {
   return (
-    <div className="bg-horizon-bg min-h-screen pt-20">
-      <section className="px-6 py-16 text-center">
-        <h1 className="mb-4 text-4xl font-bold text-white md:text-6xl">
-          Fale Conosco
-          <br />
-        </h1>
-        <p className="mx-auto max-w-2xl text-lg text-gray-400">
-          Estamos prontos para ouvir sobre seus desafios de segurança e propor a
-          melhor defesa.
-        </p>
-      </section>
+    <div className="relative min-h-screen overflow-hidden bg-black px-6 pt-32 pb-20">
+      {/* Background Decor */}
+      <div className="pointer-events-none absolute top-20 right-0 h-96 w-96 rounded-full bg-purple-600/10 blur-[100px]"></div>
 
-      <section className="container mx-auto px-6 pb-24">
-        <div className="grid grid-cols-1 gap-12 lg:grid-cols-2">
-          {/* Coluna do Formulário */}
-          <div className="rounded-2xl border border-white/10 bg-white/5 p-8 backdrop-blur-md">
-            <h2 className="mb-6 text-2xl font-bold text-white">
-              Envie uma Mensagem
-            </h2>
+      <div className="mx-auto grid max-w-6xl gap-16 md:grid-cols-2">
+        {/* Coluna Informações */}
+        <div>
+          <Reveal>
+            <h1 className="mb-6 text-4xl font-black text-white md:text-6xl">
+              <span className="text-purple-500">/</span>{" "}
+              <HackerText text="Contato" />
+            </h1>
+            <p className="mb-12 text-xl text-gray-400">
+              Pronto para blindar sua operação? Nossa equipe de resposta está em
+              alerta.
+            </p>
+          </Reveal>
 
-            <form className="space-y-6">
-              <div>
-                <label
-                  htmlFor="nome"
-                  className="mb-2 block text-sm font-medium text-gray-300"
-                >
-                  Nome Completo
+          <div className="space-y-8">
+            {[
+              {
+                icon: Mail,
+                label: "Email de Emergência",
+                value: "soc@horizon-secure.com",
+                delay: 100,
+              },
+              {
+                icon: Phone,
+                label: "Plantão 24/7",
+                value: "+55 (11) 99999-9999",
+                delay: 200,
+              },
+              {
+                icon: MapPin,
+                label: "Base de Operações",
+                value: "São Paulo, SP - Av. Paulista",
+                delay: 300,
+              },
+            ].map((item, idx) => (
+              <Reveal key={idx} delay={item.delay} direction="left">
+                <div className="flex items-center gap-5 rounded-xl border border-white/5 bg-white/[0.02] p-4 transition-colors hover:bg-white/[0.05]">
+                  <div className="text-purple-400">
+                    <item.icon size={28} />
+                  </div>
+                  <div>
+                    <div className="font-mono text-xs tracking-wider text-gray-500 uppercase">
+                      {item.label}
+                    </div>
+                    <div className="text-lg font-bold text-white">
+                      {item.value}
+                    </div>
+                  </div>
+                </div>
+              </Reveal>
+            ))}
+          </div>
+        </div>
+
+        {/* Coluna Formulário */}
+        <div className="relative rounded-3xl border border-white/10 bg-[#0A0A0A] p-8 shadow-2xl">
+          <div className="bg-grid-pattern pointer-events-none absolute inset-0 rounded-3xl opacity-10"></div>
+
+          <Reveal delay={400} direction="up">
+            <form className="relative z-10 space-y-6">
+              <div className="space-y-2">
+                <label className="font-mono text-sm text-gray-400 uppercase">
+                  Identificação
                 </label>
                 <input
                   type="text"
-                  id="nome"
-                  name="nome"
-                  required
-                  className="bg-horizon-bg focus:border-horizon-primary focus:ring-horizon-primary w-full rounded-lg border border-white/20 px-4 py-3 text-white placeholder-gray-500 transition-all focus:ring-1 focus:outline-none"
-                  placeholder="Seu nome"
+                  placeholder="Seu Nome / Empresa"
+                  className="w-full rounded-lg border border-white/10 bg-black/50 p-4 text-white transition-all outline-none focus:border-purple-500 focus:ring-1 focus:ring-purple-500"
                 />
               </div>
 
-              <div>
-                <label
-                  htmlFor="email"
-                  className="mb-2 block text-sm font-medium text-gray-300"
-                >
-                  E-mail Corporativo
+              <div className="space-y-2">
+                <label className="font-mono text-sm text-gray-400 uppercase">
+                  Canal de Retorno
                 </label>
                 <input
                   type="email"
-                  id="email"
-                  name="email"
-                  required
-                  className="bg-horizon-bg focus:border-horizon-primary focus:ring-horizon-primary w-full rounded-lg border border-white/20 px-4 py-3 text-white placeholder-gray-500 transition-all focus:ring-1 focus:outline-none"
-                  placeholder="voce@empresa.com"
+                  placeholder="seu@email.com"
+                  className="w-full rounded-lg border border-white/10 bg-black/50 p-4 text-white transition-all outline-none focus:border-purple-500 focus:ring-1 focus:ring-purple-500"
                 />
               </div>
 
-              <div>
-                <label
-                  htmlFor="mensagem"
-                  className="mb-2 block text-sm font-medium text-gray-300"
-                >
-                  Mensagem
+              <div className="space-y-2">
+                <label className="font-mono text-sm text-gray-400 uppercase">
+                  Relatório Inicial
                 </label>
                 <textarea
-                  id="mensagem"
-                  name="mensagem"
-                  rows={5}
-                  required
-                  className="bg-horizon-bg focus:border-horizon-primary focus:ring-horizon-primary w-full rounded-lg border border-white/20 px-4 py-3 text-white placeholder-gray-500 transition-all focus:ring-1 focus:outline-none"
-                  placeholder="Como podemos ajudar a proteger seu negócio?"
+                  rows={4}
+                  placeholder="Descreva sua necessidade..."
+                  className="w-full rounded-lg border border-white/10 bg-black/50 p-4 text-white transition-all outline-none focus:border-purple-500 focus:ring-1 focus:ring-purple-500"
                 ></textarea>
               </div>
 
-              <button
-                type="submit"
-                disabled
-                className="bg-horizon-primary hover:bg-horizon-primary/90 w-full rounded-lg px-6 py-4 font-bold text-white shadow-lg transition-all disabled:cursor-not-allowed disabled:opacity-50"
+              <Button
+                variant="primary"
+                icon={Send}
+                className="btn-glitch w-full"
               >
-                Enviar (Lógica Pendente - Fase 3)
-              </button>
+                Enviar Transmissão Criptografada
+              </Button>
             </form>
-          </div>
-
-          {/* Coluna de Informações */}
-          <div className="space-y-8">
-            <div className="rounded-2xl border border-white/10 bg-white/5 p-8 backdrop-blur-md">
-              <h2 className="mb-6 text-2xl font-bold text-white">
-                Canais de Atendimento
-              </h2>
-              <div className="space-y-6">
-                <div className="flex items-start gap-4">
-                  <Mail className="text-horizon-secondary mt-1" size={24} />
-                  <div>
-                    <p className="font-semibold text-white">E-mail</p>
-                    <p className="text-gray-400">contato@horizon-secure.com</p>
-                  </div>
-                </div>
-                <div className="flex items-start gap-4">
-                  <Phone className="text-horizon-secondary mt-1" size={24} />
-                  <div>
-                    <p className="font-semibold text-white">Telefone</p>
-                    <p className="text-gray-400">+55 (11) 98765-4321</p>
-                  </div>
-                </div>
-                <div className="flex items-start gap-4">
-                  <MapPin className="text-horizon-secondary mt-1" size={24} />
-                  <div>
-                    <p className="font-semibold text-white">Endereço</p>
-                    <p className="text-gray-400">
-                      Av. Digital, 123, 10º Andar
-                      <br />
-                      São Paulo - SP, Brasil
-                    </p>
-                  </div>
-                </div>
-                <div className="flex items-start gap-4">
-                  <Clock className="text-horizon-secondary mt-1" size={24} />
-                  <div>
-                    <p className="font-semibold text-white">Horário</p>
-                    <p className="text-gray-400">
-                      Segunda a Sexta, das 9h às 18h
-                    </p>
-                  </div>
-                </div>
-              </div>
-            </div>
-
-            {/* Card Extra Decorativo */}
-            <div className="from-horizon-primary/20 to-horizon-secondary/20 rounded-2xl border border-white/10 bg-gradient-to-br p-8 text-center">
-              <p className="font-medium text-white">
-                &quot;A segurança não é um destino, é uma jornada
-                constante.&quot;
-              </p>
-            </div>
-          </div>
+          </Reveal>
         </div>
-      </section>
+      </div>
     </div>
   );
 }
