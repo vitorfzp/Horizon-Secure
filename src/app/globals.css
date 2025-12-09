@@ -180,3 +180,9 @@ body {
   background: linear-gradient(180deg, #3730a3, #a855f7);
   border-radius: 10px;
 }
+/* Adicione isso ao final do arquivo globals.css */
+
+.mask-gradient-b {
+  mask-image: linear-gradient(to bottom, black 0%, transparent 100%);
+  -webkit-mask-image: linear-gradient(to bottom, black 0%, transparent 100%);
+}
