@@ -23,7 +23,7 @@ export function ProblemSection() {
         
         <div className="grid gap-6 md:grid-cols-3">
             {problems.map((item, idx) => (
-                // @ts-expect-error - Ignorando tipagem estrita de direção para agilidade
+                // @ts-expect-error - Ignorando erro de tipagem estrita no 'dir' para agilidade
                 <Reveal key={idx} delay={idx * 200} direction={item.dir}>
                   <div className={`p-8 rounded-2xl bg-[#080808] border border-white/[0.08] hover:border-${item.color}-500/30 hover:shadow-[0_0_20px_rgba(99,102,241,0.1)] transition-all duration-300 group flex flex-col items-center tech-border-glow h-full hover:-translate-y-2`}>
                       <div className={`w-14 h-14 mb-6 rounded-2xl bg-${item.color}-500/10 border border-${item.color}-500/20 flex items-center justify-center text-${item.color}-400 group-hover:scale-110 group-hover:bg-${item.color}-500 group-hover:text-white transition-all duration-300`}>
