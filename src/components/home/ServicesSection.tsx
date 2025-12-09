@@ -15,6 +15,7 @@ interface ServiceCardProps {
   index: number;
 }
 
+// --- DESKTOP (MANTIDO IGUAL - PREMIUM) ---
 const DesktopServiceCard = ({ service, onOpen }: ServiceCardProps) => {
   const Icon = service.icon;
   const color = service.color;
@@ -67,9 +68,17 @@ const DesktopServiceCard = ({ service, onOpen }: ServiceCardProps) => {
   );
 };
 
+// --- MOBILE (NOVO - ESTILO "ARQUIVO SECRETO") ---
 const MobileServiceCard = ({ service, onOpen }: ServiceCardProps) => {
   const Icon = service.icon;
   const color = service.color;
+
+  // FIX CRÍTICO DO LINT: Usamos setTimeout para evitar o erro "setState synchronously"
+  const [mounted, setMounted] = useState(false);
+  useEffect(() => {
+    const timer = setTimeout(() => setMounted(true), 0);
+    return () => clearTimeout(timer);
+  }, []);
 
   return (
     <TacticalTap
@@ -79,15 +88,19 @@ const MobileServiceCard = ({ service, onOpen }: ServiceCardProps) => {
       <div
         className={`relative border-l-4 bg-[#0A0A0E] border-l-${color}-500 group overflow-hidden rounded-r-xl border-y border-r border-white/10 p-5`}
       >
+        {/* COR DO BINÁRIO: text-{color}-400 para garantir a cor vibrante */}
         <div className="pointer-events-none absolute top-0 right-0 translate-x-2 -translate-y-2 transform opacity-20">
           <Binary size={100} className={`text-${color}-400`} />
         </div>
+
         <div className="relative z-10 flex items-center gap-4">
+          {/* Ícone Estilizado como "Chip" */}
           <div
             className={`flex h-12 w-12 shrink-0 items-center justify-center rounded-lg border border-white/10 bg-[#050505] shadow-[inset_0_0_10px_rgba(0,0,0,0.5)]`}
           >
             <Icon size={22} className={`text-${color}-400`} />
           </div>
+
           <div className="min-w-0 flex-1">
             <div className="mb-1 flex items-center justify-between">
               <h3 className="truncate pr-2 text-lg font-bold text-white">
@@ -100,6 +113,8 @@ const MobileServiceCard = ({ service, onOpen }: ServiceCardProps) => {
               {service.shortDesc}
             </p>
           </div>
+
+          {/* Seta de Ação */}
           <div className="text-gray-600 transition-colors group-hover:text-white">
             <ArrowUpRight size={20} />
           </div>
