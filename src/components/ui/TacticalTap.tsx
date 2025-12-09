@@ -1,6 +1,6 @@
 "use client";
-import React from 'react';
-import { motion } from 'framer-motion';
+import React from "react";
+import { motion } from "framer-motion";
 
 interface TacticalTapProps {
   children: React.ReactNode;
@@ -8,7 +8,11 @@ interface TacticalTapProps {
   onClick?: () => void;
 }
 
-export const TacticalTap = ({ children, className = "", onClick }: TacticalTapProps) => {
+export const TacticalTap = ({
+  children,
+  className = "",
+  onClick,
+}: TacticalTapProps) => {
   return (
     <motion.div
       className={`relative inline-block ${className}`}
@@ -19,12 +23,12 @@ export const TacticalTap = ({ children, className = "", onClick }: TacticalTapPr
     >
       {/* Efeito de Scanline que passa rápido ao clicar */}
       <motion.div
-        className="absolute inset-0 bg-white/10 skew-x-12 pointer-events-none"
-        initial={{ x: '-100%', opacity: 0 }}
+        className="pointer-events-none absolute inset-0 skew-x-12 bg-white/10"
+        initial={{ x: "-100%", opacity: 0 }}
         whileTap={{
-          x: ['100%', '-100%'],
+          x: ["100%", "-100%"],
           opacity: [0, 0.5, 0],
-          transition: { duration: 0.3 }
+          transition: { duration: 0.3 },
         }}
       />
       {children}
