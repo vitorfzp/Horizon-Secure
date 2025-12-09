@@ -63,8 +63,8 @@ const MobileServiceCard = ({ service, onOpen, index }: ServiceCardProps) => {
   const [mounted, setMounted] = useState(false);
   
   useEffect(() => { 
-    // CORREÇÃO: Usar setTimeout para evitar erro de setState síncrono no Lint
-    const timer = setTimeout(() => setMounted(true), 0);
+    // CORREÇÃO CRÍTICA: setTimeout para evitar erro de setState síncrono
+    const timer = setTimeout(() => setMounted(true), 10);
     return () => clearTimeout(timer);
   }, []);
 
