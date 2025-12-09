@@ -1,12 +1,13 @@
 "use client";
 import React, { useState, useEffect } from "react";
-import { Plus, ArrowUpRight } from "lucide-react";
+import { Plus, ArrowUpRight, FolderLock, Binary } from "lucide-react";
 import { SectionTitle } from "@/components/ui/SectionTitle";
 import { ServiceModal } from "@/components/ui/ServiceModal";
 import { servicesData } from "@/data/services";
 import { Service } from "@/types";
 import { Reveal } from "@/components/ui/Reveal";
 import { HackerText } from "@/components/ui/HackerText";
+import { TacticalTap } from "@/components/ui/TacticalTap";
 
 interface ServiceCardProps {
   service: Service;
@@ -14,7 +15,6 @@ interface ServiceCardProps {
   index: number;
 }
 
-// --- CARD DESKTOP ---
 const DesktopServiceCard = ({ service, onOpen }: ServiceCardProps) => {
   const Icon = service.icon;
   const color = service.color;
@@ -27,9 +27,7 @@ const DesktopServiceCard = ({ service, onOpen }: ServiceCardProps) => {
           ? "239,68,68"
           : color === "emerald"
             ? "16,185,129"
-            : color === "cyan"
-              ? "6,182,212"
-              : "59,130,246";
+            : "6,182,212";
 
   return (
     <div
@@ -64,102 +62,65 @@ const DesktopServiceCard = ({ service, onOpen }: ServiceCardProps) => {
             {service.shortDesc}
           </p>
         </div>
-        <div className="flex items-center gap-2 border-t border-white/5 pt-6">
-          <span
-            className={`font-mono text-[10px] tracking-wider uppercase text-${color}-400/70 group-hover:text-${color}-400 flex items-center gap-1 transition-colors`}
-          >
-            <span
-              className={`h-1.5 w-1.5 rounded-full bg-${color}-500 animate-pulse`}
-            ></span>
-            Sistema Ativo
-          </span>
-          <ArrowUpRight
-            size={14}
-            className="ml-auto transform text-gray-600 transition-colors group-hover:translate-x-1 group-hover:-translate-y-1 group-hover:text-white"
-          />
-        </div>
       </div>
     </div>
   );
 };
 
-// --- CARD MOBILE ---
-const MobileServiceCard = ({ service, onOpen, index }: ServiceCardProps) => {
+const MobileServiceCard = ({ service, onOpen }: ServiceCardProps) => {
   const Icon = service.icon;
   const color = service.color;
   const [mounted, setMounted] = useState(false);
 
   useEffect(() => {
-    const timer = setTimeout(() => setMounted(true), 10);
+    const timer = setTimeout(() => setMounted(true), 0);
     return () => clearTimeout(timer);
   }, []);
 
   return (
-    <div
-      className="group relative mb-6 last:mb-0 md:hidden"
+    <TacticalTap
+      className="mb-4 block w-full md:hidden"
       onClick={() => onOpen(service)}
     >
-      {index !== Object.keys(servicesData).length - 1 && (
-        <div className="absolute bottom-[-24px] left-8 z-0 h-[24px] w-[2px] border-l border-dotted border-white/20 bg-gradient-to-b from-white/10 to-transparent"></div>
-      )}
-
       <div
-        className={`relative overflow-hidden rounded-r-xl rounded-bl-xl border border-l-4 border-white/10 bg-[#0A0A0E] p-5 shadow-[0_0_15px_rgba(0,0,0,0.5)] transition-transform duration-200 active:scale-[0.98] border-l-${color}-500`}
+        className={`relative border-l-4 bg-[#0A0A0E] border-l-${color}-500 group overflow-hidden rounded-r-xl border-y border-r border-white/10 p-5`}
       >
-        <div
-          className={`absolute inset-0 bg-gradient-to-b from-transparent via-${color}-500/10 pointer-events-none h-[50%] w-full animate-[scanline_3s_linear_infinite] to-transparent opacity-50`}
-        ></div>
-        <div className="absolute top-0 right-0 p-2">
-          <div
-            className={`h-2 w-2 border-t border-r border-${color}-500`}
-          ></div>
+        <div className="pointer-events-none absolute top-0 right-0 translate-x-2 -translate-y-2 transform opacity-20">
+          <Binary size={100} className={`text-${color}-400`} />
         </div>
-
-        <div className="relative z-10 flex items-start gap-4">
+        <div className="relative z-10 flex items-center gap-4">
           <div
-            className={`flex h-12 w-12 shrink-0 items-center justify-center bg-${color}-500/10 border border-${color}-500/30 rounded-lg shadow-[0_0_15px_rgba(var(--tw-shadow-color),0.3)]`}
-            style={
-              {
-                "--tw-shadow-color": color === "indigo" ? "#6366f1" : "#a855f7",
-              } as React.CSSProperties
-            }
+            className={`flex h-12 w-12 shrink-0 items-center justify-center rounded-lg border border-white/10 bg-[#050505] shadow-[inset_0_0_10px_rgba(0,0,0,0.5)]`}
           >
-            <Icon size={20} className={`text-${color}-400`} />
+            <Icon size={22} className={`text-${color}-400`} />
           </div>
-
-          <div className="flex-1">
+          <div className="min-w-0 flex-1">
             <div className="mb-1 flex items-center justify-between">
-              <h3 className="text-lg font-bold tracking-tight text-white">
+              <h3 className="truncate pr-2 text-lg font-bold text-white">
                 {service.title}
               </h3>
-              <div
-                className={`h-1.5 w-1.5 rounded-full bg-${color}-500 animate-ping`}
-              ></div>
+              <FolderLock size={14} className="text-gray-600" />
             </div>
-            <p className="mb-3 text-xs leading-relaxed text-gray-400">
+            <p className="truncate font-mono text-xs text-gray-500">
+              <span className={`text-${color}-500/50 mr-2`}>&gt;&gt;</span>
               {service.shortDesc}
             </p>
-            <div className="flex h-1 w-full items-center overflow-hidden rounded-full bg-white/5">
+            {/* Aqui usamos a variável 'mounted' para animar a barrinha, resolvendo o warning */}
+            <div
+              className={`mt-2 h-0.5 w-full bg-${color}-500/20 overflow-hidden rounded-full`}
+            >
               <div
-                className={`h-full bg-${color}-500/50 w-0 transition-all duration-[1500ms] ease-out`}
+                className={`h-full bg-${color}-500 transition-all duration-1000 ease-out`}
                 style={{ width: mounted ? "100%" : "0%" }}
               ></div>
             </div>
-            <div className="mt-1 flex justify-between">
-              <span className="font-mono text-[9px] text-gray-600 uppercase">
-                Sync...
-              </span>
-              <span className={`font-mono text-[9px] text-${color}-400`}>
-                100%
-              </span>
-            </div>
+          </div>
+          <div className="text-gray-600 transition-colors group-hover:text-white">
+            <ArrowUpRight size={20} />
           </div>
         </div>
-        <div className="absolute right-0 bottom-0 p-3 opacity-50 transition-opacity group-hover:opacity-100">
-          <ArrowUpRight size={16} className={`text-${color}-500`} />
-        </div>
       </div>
-    </div>
+    </TacticalTap>
   );
 };
 
@@ -175,8 +136,8 @@ export function ServicesSection() {
       >
         <div className="bg-grid-pattern pointer-events-none absolute inset-0 opacity-[0.05]"></div>
         <div className="relative z-10 mx-auto max-w-7xl px-6">
-          <SectionTitle subtitle="Soluções de nível militar para proteção corporativa.">
-            <HackerText text="Nossos Serviços" speed={60} />
+          <SectionTitle subtitle="Soluções de nível militar.">
+            <HackerText text="Protocolos de Defesa" speed={60} />
           </SectionTitle>
           <div className="grid grid-cols-1 gap-6 md:grid-cols-2 lg:grid-cols-3">
             {servicesList.map((service, index) => (
